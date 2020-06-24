@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "Base.h"
 
 namespace Lightning {
 	class LN_API Application {

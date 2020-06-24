@@ -1,4 +1,4 @@
 #pragma once
 
-#include "Lightning/Application.h"
-#include "Lightning/EntryPoint.h"
+#include "Lightning/Core/Application.h"
+#include "Lightning/Core/EntryPoint.h"
