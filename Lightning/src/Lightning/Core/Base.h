@@ -4,6 +4,6 @@
 	#ifdef LN_BUILD_DLL
 		#define LN_API __declspec(dllexport)
 	#else
-		#define LN_API __declspec(dllexport)
+		#define LN_API __declspec(dllimport)
 	#endif
 #endif

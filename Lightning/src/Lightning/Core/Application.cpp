@@ -1,7 +1,7 @@
 #include "Application.h"
 
 namespace Lightning {
-	Application::Application() {
+	Application::Application(std::string name) {
 
 	}
 
