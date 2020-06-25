@@ -1,6 +1,0 @@
-[submodule "Lightning/vendor/spdlog"]
-	path = Lightning/vendor/spdlog
-	url = https://github.com/gabime/spdlog
-[submodule "Lightning/vendor/GLFW"]
-	path = Lightning/vendor/GLFW
-	url = https://github.com/glfw/glfw

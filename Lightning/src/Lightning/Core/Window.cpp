@@ -1,6 +1,6 @@
-#include "Window.h"
+#include "lnpch.h"
 
-#include <iostream>
+#include "Window.h"
 
 namespace Lightning {
 	Window::Window(std::string title, int width, int height) {

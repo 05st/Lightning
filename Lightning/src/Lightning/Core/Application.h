@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Base.h"
+#include "lnpch.h"
 
-#include <string>
+#include "Base.h"
 
 namespace Lightning {
 	class LN_API Application {

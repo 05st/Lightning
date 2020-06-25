@@ -1,3 +1,5 @@
+#include "lnpch.h"
+
 #include "Log.h"
 
 namespace Lightning {
