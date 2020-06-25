@@ -4,6 +4,7 @@
 
 namespace Lightning {
 	Application::Application(std::string name) {
+		Window window = Window(name);
 
 	}
 
