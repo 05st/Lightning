@@ -1,0 +1,3 @@
+[submodule "Lightning/vendor/spdlog"]
+	path = Lightning/vendor/spdlog
+	url = https://github.com/gabime/spdlog
