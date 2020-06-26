@@ -27,6 +27,9 @@
     <ClInclude Include="src\Lightning\Core\Base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lightning\Core\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lightning\Core\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,6 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lightning\Core\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lightning\Core\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Lightning\Core\Log.cpp">
