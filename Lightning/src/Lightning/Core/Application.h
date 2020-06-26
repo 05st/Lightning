@@ -2,6 +2,7 @@
 
 #include "lnpch.h"
 
+#include "Lightning/Renderer/Renderer.h"
 #include "GLFW/glfw3.h"
 #include "Base.h"
 
@@ -24,6 +25,7 @@ namespace Lightning {
 		void Run();
 	private:
 		GLFWwindow* nativeWindow;
+		Renderer renderer;
 
 		int width, height;
 		std::string title;

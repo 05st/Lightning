@@ -66,7 +66,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <PrecompiledHeaderFile>lnpch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)Lightning\vendor\spdlog\include;$(SolutionDir)Lightning\vendor\GLFW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)Lightning\vendor\spdlog\include;$(SolutionDir)Lightning\vendor\GLFW\include;$(SolutionDir)Lightning\vendor\GLAD\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -89,7 +89,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <PrecompiledHeaderFile>lnpch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)Lightning\vendor\spdlog\include;$(SolutionDir)Lightning\vendor\GLFW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)Lightning\vendor\spdlog\include;$(SolutionDir)Lightning\vendor\GLFW\include;$(SolutionDir)Lightning\vendor\GLAD\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +104,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Lightning\Renderer\Shader.h" />
+    <ClInclude Include="src\Lightning\Renderer\Renderer.h" />
     <ClInclude Include="src\Lightning\Core\Log.h" />
     <ClInclude Include="src\Lightning\Core\Application.h" />
     <ClInclude Include="src\Lightning.h" />
@@ -112,6 +114,8 @@
     <ClInclude Include="src\lnpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Lightning\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Lightning\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Lightning\Core\Log.cpp" />
     <ClCompile Include="src\Lightning\Core\Application.cpp" />
     <ClCompile Include="src\lnpch.cpp">
@@ -120,6 +124,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">lnpch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">lnpch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="vendor\GLAD\glad.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

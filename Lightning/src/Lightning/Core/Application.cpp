@@ -1,5 +1,4 @@
 #include "lnpch.h"
-
 #include "Application.h"
 
 namespace Lightning {
@@ -29,6 +28,8 @@ namespace Lightning {
 			Application* application = (Application*)glfwGetWindowUserPointer(window);
 			application->WindowResizeCallback(width, height);
 		});
+
+		renderer = Renderer();
 	}
 
 	Application::~Application() {
@@ -37,6 +38,8 @@ namespace Lightning {
 
 	void Application::Run() {
 		while (running) {
+			renderer.Prepare();
+
 			glfwPollEvents();
 			glfwSwapBuffers(nativeWindow);
 		}
