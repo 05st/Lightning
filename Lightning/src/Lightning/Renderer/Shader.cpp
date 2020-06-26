@@ -4,26 +4,48 @@
 #include "glad/glad.h"
 
 namespace Lightning {
-	Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath) {
+	Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath) {
 		std::string vertexShaderSource = ReadFile(vertexShaderPath);
 		std::string fragmentShaderSource = ReadFile(fragmentShaderPath);
 
-		unsigned int vertexShader = CompileShader(vertexShaderSource, GL_VERTEX_SHADER);
-		unsigned int fragmentShader = CompileShader(fragmentShaderSource, GL_FRAGMENT_SHADER);
+		shaderProgram = CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
+	}
 
-		shaderProgram = glCreateProgram();
-
-		glAttachShader(shaderProgram, vertexShader);
-		glAttachShader(shaderProgram, fragmentShader);
-
-		glLinkProgram(shaderProgram);
-
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
+	Shader::Shader(std::string vertexShaderSource, std::string fragmentShaderSource) {
+		shaderProgram = CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
 	}
 
 	Shader::~Shader() {
 		glDeleteProgram(shaderProgram);
+	}
+
+	unsigned int Shader::CreateShaderProgram(std::string vertexShaderSource, std::string fragmentShaderSource) {
+		unsigned int vertexShader = CompileShader(vertexShaderSource, GL_VERTEX_SHADER);
+		unsigned int fragmentShader = CompileShader(fragmentShaderSource, GL_FRAGMENT_SHADER);
+
+		unsigned int program = glCreateProgram();
+
+		glAttachShader(program, vertexShader);
+		glAttachShader(program, fragmentShader);
+
+		glLinkProgram(program);
+
+		int success;
+		glGetProgramiv(program, GL_LINK_STATUS, &success);
+		if (!success) {
+			char infoLog[512];
+			glGetProgramInfoLog(program, 512, NULL, infoLog);
+
+			glDeleteProgram(program);
+			glDeleteShader(vertexShader);
+			glDeleteShader(fragmentShader);
+
+			LN_CORE_ERROR("Failed to link shader program {0} {1}", program, infoLog);
+			return;
+		}
+
+		glDetachShader(program, vertexShader);
+		glDetachShader(program, fragmentShader);
 	}
 
 	unsigned int Shader::CompileShader(std::string source, unsigned int shaderType) {
@@ -32,6 +54,26 @@ namespace Lightning {
 		const char* source_cstr = source.c_str();
 		glShaderSource(shader, 1, &source_cstr, NULL);
 		glCompileShader(shader);
+
+		int success;
+		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+		if (!success) {
+			char infoLog[512];
+			glGetShaderInfoLog(shader, 512, NULL, infoLog);
+
+			std::string shaderTypeName;
+			switch (shaderType) {
+			case GL_VERTEX_SHADER:
+				shaderTypeName = "VertexShader";
+				break;
+			case GL_FRAGMENT_SHADER:
+				shaderTypeName = "FragmentShader";
+				break;
+			}
+
+			LN_CORE_ERROR("Failed to compile shader {0} {1}", shaderType, infoLog);
+			return;
+		}
 
 		return shader;
 	}

@@ -3,7 +3,8 @@
 namespace Lightning {
 	class Shader {
 	public:
-		Shader(std::string vertexShaderPath, std::string fragmentShaderPath);
+		Shader(std::string vertexShaderSource, std::string fragmentShaderSource);
+		Shader(const char* vertexShaderPath, const char* fragmentShaderPath);
 		~Shader();
 
 		void Bind();
@@ -11,6 +12,7 @@ namespace Lightning {
 	private:
 		unsigned int shaderProgram;
 
+		unsigned int CreateShaderProgram(std::string vertexShaderSource, std::string fragmentShaderSource);
 		unsigned int CompileShader(std::string source, unsigned int shaderType);
 		std::string ReadFile(std::string filePath);
 	};

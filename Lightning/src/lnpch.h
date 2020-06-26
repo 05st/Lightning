@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include "Lightning/Core/Log.h"
 #include "Lightning/Core/Application.h"
