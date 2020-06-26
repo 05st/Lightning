@@ -16,5 +16,6 @@ namespace Lightning {
 		void UnbindShader(std::string name);
 	private:
 		std::map<std::string, Shader> shaders;
+		std::string boundedShader;
 	};
 }
