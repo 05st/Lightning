@@ -3,7 +3,6 @@
 #include "lnpch.h"
 
 #include "Base.h"
-#include "Window.h"
 
 namespace Lightning {
 	class LN_API Application {
@@ -12,6 +11,10 @@ namespace Lightning {
 		virtual ~Application();
 
 		void Run();
+		void Stop();
+		static void WindowCloseCallback();
+	private:
+		bool running = true;
 	};
 	Application* CreateApplication();
 }

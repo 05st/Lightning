@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "Lightning/Core/Log.h"
+#include "Lightning/Core/Application.h"
 
 #ifdef LN_PLATFORM_WINDOWS
 	#include <Windows.h>

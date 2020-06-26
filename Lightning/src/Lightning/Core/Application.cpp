@@ -4,7 +4,6 @@
 
 namespace Lightning {
 	Application::Application(std::string name) {
-		Window window = Window(name);
 
 	}
 
@@ -13,6 +12,12 @@ namespace Lightning {
 	}
 
 	void Application::Run() {
-		while (true);
+		while (running) {
+
+		}
+	}
+
+	void Application::Stop() {
+		running = false;
 	}
 }
