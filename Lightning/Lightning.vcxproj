@@ -104,6 +104,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Lightning\API\GameObject.h" />
     <ClInclude Include="src\Lightning\API\Color.h" />
     <ClInclude Include="src\Lightning\API\Rectangle.h" />
     <ClInclude Include="src\Lightning\Renderer\Shader.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="src\Lightning\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Lightning\API\GameObject.cpp" />
     <ClCompile Include="src\Lightning\API\Color.cpp" />
     <ClCompile Include="src\Lightning\API\Rectangle.cpp" />
     <ClCompile Include="src\glad.c">

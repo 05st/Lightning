@@ -25,6 +25,8 @@ namespace Lightning {
 		bool IsRunning() { return running; }
 		bool IsFullscreen() { return fullscreen; }
 
+		double GetRunningTime() { return glfwGetTime(); }
+
 		void Run();
 	private:
 		GLFWwindow* nativeWindow;
