@@ -104,6 +104,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Lightning\API\Color.h" />
+    <ClInclude Include="src\Lightning\API\Square.h" />
     <ClInclude Include="src\Lightning\Renderer\Shader.h" />
     <ClInclude Include="src\Lightning\Renderer\Renderer.h" />
     <ClInclude Include="src\Lightning\Core\Log.h" />
@@ -112,8 +114,17 @@
     <ClInclude Include="src\Lightning\Core\Base.h" />
     <ClInclude Include="src\Lightning\Core\EntryPoint.h" />
     <ClInclude Include="src\lnpch.h" />
+    <ClInclude Include="src\Lightning\API\Vector2.h" />
+    <ClInclude Include="src\Lightning\Renderer\VertexBuffer.h" />
+    <ClInclude Include="src\Lightning\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Lightning\API\Color.cpp" />
+    <ClCompile Include="src\Lightning\API\Square.cpp" />
+    <ClCompile Include="src\glad.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="src\Lightning\Renderer\Shader.cpp" />
     <ClCompile Include="src\Lightning\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Lightning\Core\Log.cpp" />
@@ -124,7 +135,9 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">lnpch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">lnpch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="vendor\GLAD\glad.c" />
+    <ClCompile Include="src\Lightning\API\Vector2.cpp" />
+    <ClCompile Include="src\Lightning\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="src\Lightning\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

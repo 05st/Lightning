@@ -1,7 +1,6 @@
 #include "lnpch.h"
-#include "Shader.h"
 
-#include "glad/glad.h"
+#include "Shader.h"
 
 namespace Lightning {
 	Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath) {
@@ -41,14 +40,17 @@ namespace Lightning {
 			glDeleteShader(fragmentShader);
 
 			LN_CORE_ERROR("Failed to link shader program {0} {1}", program, infoLog);
-			return;
+			return 0;
 		}
 
 		glDetachShader(program, vertexShader);
 		glDetachShader(program, fragmentShader);
+
+		return program;
 	}
 
 	unsigned int Shader::CompileShader(std::string source, unsigned int shaderType) {
+		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		unsigned int shader = glCreateShader(shaderType);
 
 		const char* source_cstr = source.c_str();
@@ -72,7 +74,7 @@ namespace Lightning {
 			}
 
 			LN_CORE_ERROR("Failed to compile shader {0} {1}", shaderType, infoLog);
-			return;
+			return 0;
 		}
 
 		return shader;

@@ -9,13 +9,19 @@ namespace Lightning {
 
 		if (!glfwInit()) { LN_CORE_FATAL("Failed to initalize GLFW"); }
 
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 		LN_CORE_INFO("Creating window ({0}x{1}) \"{2}\"", width, height, title);
 		nativeWindow = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 		if (!nativeWindow) { LN_CORE_FATAL("Failed to create GLFW window"); }
 
 		glfwMakeContextCurrent(nativeWindow);
-		glfwSetWindowUserPointer(nativeWindow, this);
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) { LN_CORE_FATAL("Failed to initalize GLAD"); }
+
 		glViewport(0, 0, width, height);
+		glfwSetWindowUserPointer(nativeWindow, this);
 
 		SetVsync(true);
 
@@ -29,7 +35,7 @@ namespace Lightning {
 			application->WindowResizeCallback(width, height);
 		});
 
-		renderer = Renderer();
+		renderer = new Renderer();
 	}
 
 	Application::~Application() {
@@ -38,7 +44,9 @@ namespace Lightning {
 
 	void Application::Run() {
 		while (running) {
-			renderer.Prepare();
+			renderer->Prepare();
+			
+			renderer->Draw();
 
 			glfwPollEvents();
 			glfwSwapBuffers(nativeWindow);

@@ -2,8 +2,10 @@
 
 #include "lnpch.h"
 
-#include "Lightning/Renderer/Renderer.h"
+#include "glad/glad.h"
 #include "GLFW/glfw3.h"
+
+#include "Lightning/Renderer/Renderer.h"
 #include "Base.h"
 
 namespace Lightning {
@@ -15,6 +17,7 @@ namespace Lightning {
 		void SetVsync(bool enabled);
 
 		GLFWwindow* GetNativeWindow() { return nativeWindow; }
+		Renderer* GetRenderer() { return renderer; }
 		int GetWidth() { return width; }
 		int GetHeight() { return height; }
 		std::string GetTitle() { return title; }
@@ -25,7 +28,7 @@ namespace Lightning {
 		void Run();
 	private:
 		GLFWwindow* nativeWindow;
-		Renderer renderer;
+		Renderer* renderer;
 
 		int width, height;
 		std::string title;
